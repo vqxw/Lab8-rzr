@@ -1,5 +1,3 @@
-<?php header( 'yes' ) ;  ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -117,52 +115,16 @@
                     }); //ajax
     
                 });
-
-                $("#tpassword").change( function() {
-                    //alert("Enter things");
-    
-                    $.ajax({
-
-                        type: "GET",
-                        url: "checkUsername.php",
-                        dataType: "json",
-                        data: { "password": $("#password").val()    },
-                        success: function(data,status) {
-
-                            //alert(data.password);
-
-                           if ($("#pass1").val() != $("#pass2").val()) { 
-                                $("#password").html("<div id = 'password'> Passwords don't match </div>")
-                            }
-
-                            else if ($("#pass1").val() == $("#pass2").val()) { 
-                                $("#password").html("<div id = 'password'> Passwords match </div>")
-                            }
-
-                            else
-                                $("#password").html("<div id = 'password'> </div>")
-                        },
-
-                        complete: function(data,status) { //optional, used for debugging purposes
-                        //alert(status);
-                        }
-
-                    });//ajax
-
-                });
-
+                
                 $("#sub").click(function() {
                     
-                    if ($("#pass1").val() != $("#pass2").val()) { 
-                        $("#password").html("<div id = 'password'> Passwords don't match </div>")
+                    if ($("#pass1").val() == $("#pass2").val()) { 
+                        $("#passText").html("Passwords match. GOOD JOB")
                     }
-                    
-                    else if ($("#pass1").val() == $("#pass2").val()) { 
-                        $("#password").html("<div id = 'password'> Passwords match </div>")
+                            
+                    else  { 
+                        $("#passText").html("Passwords don't match. FIX THIS")
                     }
-                    
-                    else
-                        $("#password").html("<div id = 'password'> </div>")
 
                 });
 
@@ -205,9 +167,9 @@
 
                 Desired Username: <input type="text" id = "username" span id = "user"><br>
 
-                Password: <input type="password" span id = "pass1"> <div id = "password"></div> <br>
+                Password: <input type="password" id = "pass1"><br>
 
-                Type Password Again: <input type="password" id = "tpassword" span id = "pass2"><br>
+                Type Password Again: <input type="password" id = "pass2"> <span id = "passText"></span> <br>
 
                 <input type="submit" value="Sign up!" id = "sub">
             </fieldset>
