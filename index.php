@@ -118,7 +118,11 @@
                 
                 $("#sub").click(function() {
                     
-                    if ($("#pass1").val() == $("#pass2").val()) { 
+                    if ( $("#pass1").val() == "" || $("#pass2").val() == "" ) { 
+                        $("#passText").html("Cannot leave passwords empty. FIX THIS")
+                    }
+                    
+                    else if ($("#pass1").val() == $("#pass2").val()) { 
                         $("#passText").html("Passwords match. GOOD JOB")
                     }
                             
